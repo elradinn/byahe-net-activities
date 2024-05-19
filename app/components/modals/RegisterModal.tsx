@@ -58,7 +58,10 @@ const RegisterModal = () => {
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
-            <Heading title="Welcome to Airbnb" subtitle="Create an account" />
+            <Heading
+                title="Welcome to Byahe.net"
+                subtitle="Create an account"
+            />
             <Input
                 id="email"
                 label="Email"
@@ -112,9 +115,7 @@ const RegisterModal = () => {
                 icon={AiFillFacebook}
                 onClick={() => signIn('facebook')}
             /> */}
-            <div
-                className="mt-4 font-light text-center  text-neutral-500"
-            >
+            <div className="mt-4 font-light text-center  text-neutral-500">
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div>Already have an account?</div>
                     <div

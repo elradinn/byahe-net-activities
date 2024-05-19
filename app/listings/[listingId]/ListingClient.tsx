@@ -71,7 +71,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             amount: 60,
         },
         {
-            name: "Airbnb Service Fee",
+            name: "Byahe.net Service Fee",
             amount: 30,
         },
     ];
@@ -140,7 +140,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
     }, [listing.category]);
 
     useEffect(() => {
-        document.title = `${listing.title} - Houses for Rent in ${listing.locationValue} - Airbnb`;
+        document.title = `${listing.title} - Activities in ${listing.locationValue} - Byahe.net`;
     }, [listing.title, listing.locationValue]);
 
     return (
@@ -182,14 +182,14 @@ const ListingClient: React.FC<ListingClientProps> = ({
                                 <div className="flex flex-row items-center justify-between p-6 mt-4 border border-neutral-300 rounded-xl">
                                     <div className="font-light">
                                         <strong className="font-semibold">
-                                            This is a rare find.
+                                            This is a very recommended find.
                                         </strong>{" "}
                                         {listing.user.name?.split(" ")[0]}
-                                        &apos;s place on Airbnb is usually fully
-                                        booked.
+                                        &apos;s activities on Byahe.net is
+                                        usually good
                                     </div>
                                     <IoDiamondOutline
-                                        className="ml-4 text-rose-500"
+                                        className="ml-4 text-blue-500"
                                         size={50}
                                     />
                                 </div>

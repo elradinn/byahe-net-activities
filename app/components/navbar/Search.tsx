@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import { useMemo } from 'react';
-import { BiSearch } from 'react-icons/bi'
-import { useSearchParams } from 'next/navigation';
-import { differenceInDays } from 'date-fns';
+import { useMemo } from "react";
+import { BiSearch } from "react-icons/bi";
+import { useSearchParams } from "next/navigation";
+import { differenceInDays } from "date-fns";
 
-import useCountries from '@/app/hooks/useCountries';
-import useSearchModal from '@/app/hooks/useSearchModal';
+import useCountries from "@/app/hooks/useCountries";
+import useSearchModal from "@/app/hooks/useSearchModal";
 
 const Search = () => {
     const searchModal = useSearchModal();
     const params = useSearchParams();
     const { getByValue } = useCountries();
 
-    const locationValue = params?.get('locationValue');
-    const startDate = params?.get('startDate');
-    const endDate = params?.get('endDate');
-    const guestCount = params?.get('guestCount');
+    const locationValue = params?.get("locationValue");
+    const startDate = params?.get("startDate");
+    const endDate = params?.get("endDate");
+    const guestCount = params?.get("guestCount");
 
     const locationLabel = useMemo(() => {
         if (locationValue) {
             return getByValue(locationValue as string)?.label;
         }
 
-        return 'Anywhere';
+        return "Anywhere";
     }, [locationValue, getByValue]);
 
     const durationLabel = useMemo(() => {
@@ -36,18 +36,20 @@ const Search = () => {
                 diff = 1;
             }
 
-            return `${diff} ${diff > 1 ? 'Days' : 'Day'}`
+            return `${diff} ${diff > 1 ? "Days" : "Day"}`;
         }
 
-        return 'Any Week';
+        return "Any Week";
     }, [startDate, endDate]);
 
     const guestLabel = useMemo(() => {
         if (guestCount) {
-            return `${guestCount} ${parseInt(guestCount) > 1 ? 'Guests' : 'Guest'}`;
+            return `${guestCount} ${
+                parseInt(guestCount) > 1 ? "Hours" : "Hours"
+            }`;
         }
 
-        return 'Add Guests';
+        return "Hours";
     }, [guestCount]);
 
     return (
@@ -73,22 +75,8 @@ const Search = () => {
                 lg:transition-none
             "
         >
-            <div
-                className="
-                    flex
-                    flex-row
-                    items-center
-                    justify-between
-                "
-            >
-                <div
-                    className="
-                        text-sm
-                        font-bold
-                        px-6
-                        truncate
-                    "
-                >
+            <div className="flex flex-row items-center justify-between ">
+                <div className="px-6 text-sm font-bold truncate ">
                     {locationLabel}
                 </div>
                 <div
@@ -106,31 +94,12 @@ const Search = () => {
                 >
                     {durationLabel}
                 </div>
-                <div
-                    className="
-                        text-sm
-                        pl-6
-                        pr-2
-                        text-gray-600
-                        flex
-                        flex-row
-                        items-center
-                        gap-3
-                    "
-                >
-                    <div 
-                        className="
-                            hidden 
-                            sm:block
-                            truncate
-                        "
-                    >
-                        {guestLabel}
-                    </div>
-                    <div 
+                <div className="flex flex-row items-center gap-3 pl-6 pr-2 text-sm text-gray-600 ">
+                    <div className="hidden truncate sm:block">{guestLabel}</div>
+                    <div
                         className="
                             p-1.5
-                            bg-rose-500
+                            bg-blue-500
                             rounded-full
                             text-white
                         "
@@ -141,6 +110,6 @@ const Search = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Search;

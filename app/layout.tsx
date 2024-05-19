@@ -14,8 +14,8 @@ import SearchModal from "./components/modals/SearchModal";
 import PaymentModal from "./components/modals/PaymentModal";
 
 export const metadata = {
-    title: "Vacation Homes & Condo Rentals - Airbnb - Airbnb",
-    description: "My Airbnb Clone!",
+    title: "Things to Do and Tours in Byahe.net",
+    description: "Byahe.net",
 };
 
 const font = Nunito({

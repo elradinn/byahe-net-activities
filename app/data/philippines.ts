@@ -8156,7 +8156,7 @@ export const philippines = [
     },
     {
         Province: "Zamboanga Sibugay",
-        City: "Roseller Lim",
+        City: "blueller Lim",
         LatLng: "7.700; 122.467",
     },
     {
