@@ -2,30 +2,32 @@
 
 import Container from "../Container";
 
-import { TbBeach, TbMountain, TbPool, TbUfo, TbVolcano } from "react-icons/tb";
 import {
-    GiWindmill,
-    GiIsland,
-    GiCastle,
-    GiForestCamp,
-    GiMountainCave,
-    GiCactus,
-    GiBarn,
-    GiJungle,
-    GiTreehouse,
-    GiFlowerPot,
-    GiFamilyHouse,
-    GiPalmTree,
+    FaCity,
+    FaLandmark,
+    FaRunning,
+    FaArtstation,
+    FaSpa,
+    FaChild,
+    FaShoppingBag,
+    FaTheaterMasks,
+    FaChalkboardTeacher,
+    FaShip,
+    FaCameraRetro,
+    FaCalendarAlt,
+    FaBinoculars,
+    FaMountain,
+    FaBiking,
+    FaLeaf,
+    FaHelicopter,
+    FaUtensils,
+} from "react-icons/fa";
+import {
+    GiWildfires,
+    GiClassicalKnowledge,
+    GiMountainClimbing,
 } from "react-icons/gi";
-import {
-    MdOutlineCabin,
-    MdOutlineDiamond,
-    MdOutlineVilla,
-} from "react-icons/md";
-import { FaLandmark, FaSkiing, FaWater } from "react-icons/fa";
-import { BsSnow, BsWater } from "react-icons/bs";
-import { HiOutlineHomeModern } from "react-icons/hi2";
-import { AiOutlineHeart } from "react-icons/ai";
+import { MdOutlineWater, MdWineBar, MdOutlineNightlife } from "react-icons/md";
 
 import CategoryBox from "../CategoryBox";
 import { useSearchParams, usePathname } from "next/navigation";
@@ -37,147 +39,152 @@ import useSearchModal from "@/app/hooks/useSearchModal";
 
 export const categories = [
     {
-        label: "Beachfront",
-        icon: TbBeach,
+        label: "City",
+        icon: FaCity,
         description:
-            "Enjoy a seaside escape with beautiful views and easy access to the beach.",
+            "Explore the highlights and hidden gems of vibrant cities with guided tours.",
     },
     {
-        label: "Rustic",
-        icon: GiWindmill,
-        description:
-            "Experience a simpler way of life with cozy cabins and homes that evoke a bygone era.",
-    },
-    {
-        label: "Cabin",
-        icon: MdOutlineCabin,
-        description:
-            "Experience rustic living in a cozy cabin. Perfect for a romantic getaway or a peaceful retreat in nature.",
-    },
-    {
-        label: "Modern",
-        icon: MdOutlineVilla,
-        description:
-            "Stay in sleek, contemporary homes that offer style and sophistication.",
-    },
-    {
-        label: "Mountain",
-        icon: TbMountain,
-        description:
-            "Escape to the mountains and enjoy breathtaking views, fresh air, and outdoor activities.",
-    },
-    {
-        label: "Pools",
-        icon: TbPool,
-        description:
-            "Relax and unwind in homes with private pools, hot tubs, and luxurious amenities.",
-    },
-    {
-        label: "Tropical",
-        icon: GiIsland,
-        description:
-            "Discover our Tropical homes, a perfect escape to paradise. Relax and explore with stunning views, beaches, and exotic nature.",
-    },
-    {
-        label: "Lakefront",
-        icon: BsWater,
-        description:
-            "Enjoy lakefront homes with beautiful views and water activities like fishing and boating.",
-    },
-    {
-        label: "Tiny Home",
-        icon: HiOutlineHomeModern,
-        description:
-            "Experience the cozy and minimalist lifestyle in a compact home, often with unique and space-saving designs.",
-    },
-    {
-        label: "OMG!",
-        icon: TbUfo,
-        description:
-            "Unleash your inner weirdo and stay in a place that's as unique as you are! From treehouses to underground bunkers, these listings are anything but ordinary.",
-    },
-    {
-        label: "Island",
-        icon: GiPalmTree,
-        description:
-            "Stay on a private island and experience the ultimate in seclusion and luxury.",
-    },
-    {
-        label: "Camping",
-        icon: GiForestCamp,
-        description:
-            "Experience luxury camping in beautiful natural settings with all the amenities of home.",
-    },
-    {
-        label: "Caves",
-        icon: GiMountainCave,
-        description:
-            "Stay in unique and unusual homes carved into cliffs and nestled in natural caves.",
-    },
-    {
-        label: "Farm",
-        icon: GiBarn,
-        description:
-            "Get back to nature with farm stays and rural escapes, surrounded by fields and countryside.",
-    },
-    {
-        label: "Mansion",
-        icon: GiFamilyHouse,
-        description:
-            "Live like royalty in these grand and luxurious estates, complete with lavish amenities and sprawling grounds.",
-    },
-    {
-        label: "Jungle",
-        icon: GiJungle,
-        description:
-            "Explore lush forests and exotic wildlife in some of the world's most beautiful jungles.",
-    },
-    {
-        label: "Romantic",
-        icon: AiOutlineHeart,
-        description:
-            "Experience the ultimate romantic getaway in some of the world's most beautiful destinations.",
-    },
-    {
-        label: "Garden",
-        icon: GiFlowerPot,
-        description: "Relax in beautiful gardens and green spaces.",
-    },
-    {
-        label: "Historic",
+        label: "History",
         icon: FaLandmark,
         description:
-            "Stay in some of the world's most famous historic sites and monuments.",
+            "Visit famous landmarks and immerse yourself in the rich history of different regions.",
     },
     {
-        label: "Treehouse",
-        icon: GiTreehouse,
+        label: "Nature",
+        icon: GiWildfires,
         description:
-            "Experience a unique and cozy getaway in a treehouse surrounded by nature.",
+            "Experience the beauty of nature and observe wildlife in their natural habitats.",
     },
     {
-        label: "Lux",
-        icon: MdOutlineDiamond,
+        label: "Adventure",
+        icon: FaRunning,
         description:
-            "Indulge in opulent and extravagant homes and villas, with all the amenities of a five-star hotel.",
+            "Get your adrenaline pumping with activities like skydiving, bungee jumping, and white-water rafting.",
     },
     {
-        label: "Heritage",
-        icon: GiCastle,
+        label: "Water",
+        icon: MdOutlineWater,
         description:
-            "Stay in homes that are part of the Philippines' rich cultural and historical heritage.",
+            "Enjoy water-based activities such as kayaking, snorkeling, and jet skiing.",
     },
     {
-        label: "Surfing",
-        icon: FaWater,
+        label: "Food",
+        icon: MdWineBar,
         description:
-            "Stay close to the best surfing spots and enjoy the waves in the Philippines.",
+            "Savor local cuisine and fine wines with food tours and tastings.",
     },
     {
-        label: "Volcano View",
-        icon: TbVolcano,
+        label: "Culture",
+        icon: GiClassicalKnowledge,
         description:
-            "Enjoy breathtaking views of the Philippines' famous volcanoes from your accommodation.",
+            "Immerse yourself in the local culture through traditional music, dance, and crafts.",
+    },
+    {
+        label: "Hiking",
+        icon: GiMountainClimbing,
+        description:
+            "Explore scenic trails and enjoy the great outdoors with guided hikes and treks.",
+    },
+    {
+        label: "Museums",
+        icon: FaArtstation,
+        description:
+            "Discover art, history, and science through visits to museums and galleries.",
+    },
+    {
+        label: "Wellness",
+        icon: FaSpa,
+        description:
+            "Unwind with spa treatments, yoga classes, and wellness retreats.",
+    },
+    {
+        label: "Family",
+        icon: FaChild,
+        description:
+            "Find activities and attractions that the whole family will enjoy.",
+    },
+    {
+        label: "Nightlife",
+        icon: MdOutlineNightlife,
+        description:
+            "Experience the local nightlife with visits to bars, clubs, and live music venues.",
+    },
+    {
+        label: "Shopping",
+        icon: FaShoppingBag,
+        description:
+            "Shop for unique souvenirs, local crafts, and luxury goods.",
+    },
+    {
+        label: "Theater",
+        icon: FaTheaterMasks,
+        description:
+            "Enjoy live performances, including theater, concerts, and comedy shows.",
+    },
+    {
+        label: "Workshops",
+        icon: FaChalkboardTeacher,
+        description:
+            "Learn new skills with workshops and classes in various fields.",
+    },
+    {
+        label: "Boating",
+        icon: FaShip,
+        description:
+            "Explore coastlines, rivers, and lakes with scenic boat tours.",
+    },
+    {
+        label: "Photography",
+        icon: FaCameraRetro,
+        description: "Capture stunning photos with guided photography tours.",
+    },
+    {
+        label: "Festivals",
+        icon: FaCalendarAlt,
+        description:
+            "Join in the celebrations with local festivals and events.",
+    },
+    {
+        label: "Safaris",
+        icon: FaBinoculars,
+        description:
+            "Experience the thrill of wildlife safaris and observe animals in their natural habitat.",
+    },
+    {
+        label: "Extreme",
+        icon: FaMountain,
+        description:
+            "Test your limits with extreme sports like rock climbing, paragliding, and more.",
+    },
+    {
+        label: "Biking",
+        icon: FaBiking,
+        description: "Discover cities and countryside on guided bike tours.",
+    },
+    {
+        label: "Eco",
+        icon: FaLeaf,
+        description:
+            "Explore the natural environment responsibly with eco-friendly tours.",
+    },
+    {
+        label: "Helicopter",
+        icon: FaHelicopter,
+        description:
+            "Get a bird’s-eye view of stunning landscapes with helicopter tours.",
+    },
+    {
+        label: "Cooking",
+        icon: FaUtensils,
+        description:
+            "Learn to cook local dishes with hands-on cooking classes.",
+    },
+    {
+        label: "Sightseeing",
+        icon: FaBinoculars,
+        description:
+            "Discover the most iconic and picturesque sights with guided sightseeing tours.",
     },
 ];
 
@@ -247,7 +254,7 @@ const Categories = () => {
             </div>
             <div
                 onClick={searchModal.onOpen}
-                className="flex-row items-center hidden gap-2 p-3 text-xs font-bold transition duration-150 ease-in-out border cursor-pointer  sm:flex border-neutral-400 text-semibold rounded-xl hover:shadow-md ml-14"
+                className="flex-row items-center hidden gap-2 p-3 text-xs font-bold transition duration-150 ease-in-out border cursor-pointer sm:flex border-neutral-400 text-semibold rounded-xl hover:shadow-md ml-14"
             >
                 <IoMdSwitch size={21} /> Filters
             </div>

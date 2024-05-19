@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import queryString from "query-string";
 import dynamic from "next/dynamic";
@@ -15,11 +15,10 @@ import Counter from "../inputs/Counter";
 import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
 import Heading from "../Heading";
 
-
 enum STEPS {
     LOCATION = 0,
     DATE = 1,
-    INFO = 2
+    INFO = 2,
 }
 
 const SearchModal = () => {
@@ -36,21 +35,24 @@ const SearchModal = () => {
     const [dateRange, setDateRange] = useState<Range>({
         startDate: new Date(),
         endDate: new Date(),
-        key: 'selection'
+        key: "selection",
     });
-    
-    const Map = useMemo(() => dynamic(() => import('../Map'), {
-        ssr: false,
-    }), [location]);
+
+    const Map = useMemo(
+        () =>
+            dynamic(() => import("../Map"), {
+                ssr: false,
+            }),
+        [location]
+    );
 
     const onBack = useCallback(() => {
-        setStep(val => val - 1);
+        setStep((val) => val - 1);
     }, []);
 
     const onNext = useCallback(() => {
-        setStep(val => val + 1);
+        setStep((val) => val + 1);
     }, []);
-
 
     const onSubmit = useCallback(async () => {
         if (step !== STEPS.INFO) return onNext();
@@ -64,16 +66,21 @@ const SearchModal = () => {
             locationValue: location?.value,
             guestCount,
             roomCount,
-            bathroomCount
+            bathroomCount,
         };
 
-        if (dateRange.startDate) updatedQuery.startDate = formatISO(dateRange.startDate);
-        if (dateRange.endDate) updatedQuery.endDate = formatISO(dateRange.endDate);
+        if (dateRange.startDate)
+            updatedQuery.startDate = formatISO(dateRange.startDate);
+        if (dateRange.endDate)
+            updatedQuery.endDate = formatISO(dateRange.endDate);
 
-        const url = queryString.stringifyUrl({
-            url: '/',
-            query: updatedQuery
-        }, { skipNull: true });
+        const url = queryString.stringifyUrl(
+            {
+                url: "/",
+                query: updatedQuery,
+            },
+            { skipNull: true }
+        );
 
         setStep(STEPS.LOCATION);
 
@@ -90,19 +97,19 @@ const SearchModal = () => {
         bathroomCount,
         dateRange,
         onNext,
-        params
+        params,
     ]);
 
     const actionLabel = useMemo(() => {
-        if (step === STEPS.INFO) return 'Search';
+        if (step === STEPS.INFO) return "Search";
 
-        return 'Next';
+        return "Next";
     }, [step]);
 
     const secondaryActionLabel = useMemo(() => {
         if (step === STEPS.LOCATION) return undefined;
 
-        return 'Back';
+        return "Back";
     }, [step]);
 
     let bodyContent = (
@@ -113,12 +120,12 @@ const SearchModal = () => {
             />
             <CountrySelect
                 value={location}
-                onChange={val => setLocation(val as CountrySelectValue)}
+                onChange={(val) => setLocation(val as CountrySelectValue)}
             />
             <hr />
             <Map center={location?.latlng} />
         </div>
-    )
+    );
 
     if (step === STEPS.DATE) {
         bodyContent = (
@@ -129,10 +136,10 @@ const SearchModal = () => {
                 />
                 <Calendar
                     value={dateRange}
-                    onChange={val => setDateRange(val.selection)}
+                    onChange={(val) => setDateRange(val.selection)}
                 />
             </div>
-        )
+        );
     }
 
     if (step === STEPS.INFO) {
@@ -143,12 +150,12 @@ const SearchModal = () => {
                     subtitle="Find your perfect place!"
                 />
                 <Counter
-                    title="Guests"
-                    subtitle="How many guests are coming?"
+                    title="Hours"
+                    subtitle="How much time (hour) do you want to enjoy?"
                     value={guestCount}
-                    onChange={val => setGuestCount(val)}
+                    onChange={(val) => setGuestCount(val)}
                 />
-                <hr />
+                {/* <hr />
                 <Counter
                     title="Rooms"
                     subtitle="How many rooms do you need?"
@@ -161,9 +168,9 @@ const SearchModal = () => {
                     subtitle="How many bathrooms do you need??"
                     value={bathroomCount}
                     onChange={val => setbathroomCount(val)}
-                />
+                /> */}
             </div>
-        )
+        );
     }
 
     return (
@@ -178,6 +185,6 @@ const SearchModal = () => {
             body={bodyContent}
         />
     );
-}
- 
+};
+
 export default SearchModal;
